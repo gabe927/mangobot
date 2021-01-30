@@ -1,5 +1,9 @@
 import discord
 from discord.utils import get
+import json
+
+with open('./env.json') as f:
+  jData = json.load(f)
 
 client = discord.Client()
 
@@ -119,4 +123,4 @@ async def on_message(message):
 #                #
 ##################
 
-client.run('TOKEN HERE')
+client.run(jData["discordToken"])
