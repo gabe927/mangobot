@@ -72,7 +72,7 @@ async def on_message(message):
     if message.content.startswith("!add-role"):
         # check if user provided roles
         if ((message.content == "!add-role") or (message.content == "!add-roles")):
-            await message.channel.send("The mango council will only consider filled out applications.")
+            await message.channel.send("The Mango Council will only consider filled out applications.")
             return
 
         member = message.author
@@ -88,13 +88,13 @@ async def on_message(message):
                 await member.add_roles(roleGuild)
                 await message.channel.send(f"Your mango bretheren in \"{r.upper()}\" welcome you.")
             else:
-                await message.channel.send(f"The mango council is too busy for this; \"{r}\" doesn't exist!")
+                await message.channel.send(f"You are not worthy of the juicy pleasures of \"{r}\"")
 
     # remove roles
     if message.content.startswith("!rm-role"):
         # check if user provided roles
         if ((message.content == "!rm-role") or (message.content == "!rm-roles")):
-            await message.channel.send("The mango council will only consider filled out applications.")
+            await message.channel.send("The Mango Council will only consider filled out applications.")
             return
 
         member = message.author
@@ -108,7 +108,7 @@ async def on_message(message):
             roleGuild = get(member.guild.roles, name=r.upper())
             if type(roleGuild) == discord.role.Role:
                 await member.remove_roles(roleGuild)
-                await message.channel.send(f"The mango council has revoked your membership in \"{r.upper()}\".")
+                await message.channel.send(f"The Mango Council has revoked your membership in \"{r.upper()}\".")
             else:
                 await message.channel.send(f"Stop wasting the Mango Council's time! \"{r}\" doesn't exist.")
 
