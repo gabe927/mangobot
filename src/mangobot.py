@@ -9,7 +9,7 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-    print(f"logged in as {client.user}")
+    print(f"worshipping mango as {client.user}")
 
 @client.event
 async def on_message(message):
@@ -46,7 +46,7 @@ async def on_message(message):
 
     # ignore messages from the bot
     if message.author == client.user:
-        print("Bot message. Ignoring")
+        print("Bot message. Ignoring own mango worship.")
         return
 
     # Hello!
@@ -72,7 +72,7 @@ async def on_message(message):
     if message.content.startswith("!add-role"):
         # check if user provided roles
         if ((message.content == "!add-role") or (message.content == "!add-roles")):
-            await message.channel.send("Ummm... I think you're missing some roles there bud")
+            await message.channel.send("The mango council will only consider filled out applications.")
             return
 
         member = message.author
@@ -86,15 +86,15 @@ async def on_message(message):
             roleGuild = get(member.guild.roles, name=r.upper())
             if type(roleGuild) == discord.role.Role:
                 await member.add_roles(roleGuild)
-                await message.channel.send(f"Role \"{r.upper()}\" given")
+                await message.channel.send(f"Your mango bretheren in \"{r.upper()}\" welcome you.")
             else:
-                await message.channel.send(f"These aren't the droids you're looking for...\nRole \"{r}\" don't exist.")
+                await message.channel.send(f"The mango council is too busy for this; \"{r}\" doesn't exist!")
 
     # remove roles
     if message.content.startswith("!rm-role"):
         # check if user provided roles
         if ((message.content == "!rm-role") or (message.content == "!rm-roles")):
-            await message.channel.send("Ummm... I think you're missing some roles there bud")
+            await message.channel.send("The mango council will only consider filled out applications.")
             return
 
         member = message.author
@@ -108,9 +108,9 @@ async def on_message(message):
             roleGuild = get(member.guild.roles, name=r.upper())
             if type(roleGuild) == discord.role.Role:
                 await member.remove_roles(roleGuild)
-                await message.channel.send(f"Role \"{r.upper()}\" removed")
+                await message.channel.send(f"The mango council has revoked your membership in \"{r.upper()}\".")
             else:
-                await message.channel.send(f"These aren't the droids you're looking for...\nRole \"{r}\" don't exist.")
+                await message.channel.send(f"Stop wasting the Mango Council's time! \"{r}\" doesn't exist.")
 
     # little easter egg :)
     if message.content == "What's a sexy fruit?":
