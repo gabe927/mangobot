@@ -105,12 +105,12 @@ async def on_message(message):
         roles = roles.split(",")
 
         for r in roles:
-            roleGuild = get(member.guild.roles, name=r.upper())
-            if type(roleGuild) == discord.role.Role:
+            roleGuild = get(member.roles, name=r.upper())
+            if roleGuild is None:
+                await message.channel.send(f"The Mango Council has not given you membership in \"{r}\".")
+            else:
                 await member.remove_roles(roleGuild)
                 await message.channel.send(f"The Mango Council has revoked your membership in \"{r.upper()}\".")
-            else:
-                await message.channel.send(f"Stop wasting the Mango Council's time! \"{r}\" doesn't exist.")
 
     # little easter egg :)
     if message.content == "What's a sexy fruit?":
